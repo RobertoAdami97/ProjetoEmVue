@@ -1,0 +1,8 @@
+instalando o vue
+-npm i --save vue
+============================================================
+intalando o vue-cli e criando um projeto vue ja configurado
+-vue create nomeDoProjeto
+
+o vue-cli serve para criar um projeto ja configurado de maneira mais rapida para ser usado
+===========================================================================================

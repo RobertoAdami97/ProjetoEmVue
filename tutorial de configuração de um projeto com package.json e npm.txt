@@ -1,0 +1,40 @@
+npm init abilita uma serie de perguntas pra voce dizer como ser� seu arquivo package.json
+=========================================================================================
+package name: � o nome do projeto
+description: � a vers�o do projeto
+entry point: � o arquivo inicial do projeto
+test command: � o comando de teste
+git repository: � o repositorio do git
+keywords: s�o palavras reservadas
+author: � o nome do autor do projeto
+licens: � o tipo de licen�a do software, EX: bergli,apache...
+is this OK?: pergunta se esta tudo OK
+==========================================================================================
+npm init -y cria a mesma coisa e da todas as respostas com yes, assim ele executa tudo automatico
+==========================================================================================
+npm i cria o arquivo package-lock.json
+O arquivo package-lock.json deve ir para o repositorio porque nele consta exatamente de 
+uma forma mais precisa extamente a vers�o que foi baixa das dependecias
+==========================================================================================
+PARA INSTALAR DEPENDENCIAS DE TERCEIROS EX: Bootstrap, jQuery...
+Execute o seguinte comando: npm i bootstra ou npm i jQuery
+==========================================================================================
+npm i --save bootstrap, esse comando importa a dependecia pra dentro do package.json e salva la
+npm i --save-dev, -dev significa que vai ter uma dependecia que so � necess�ria em desenvolvimento
+nao � necess�ria em produ��o, uma dependecia de teste, colocaria -test
+==========================================================================================
+npm i --save-dev bootstrap@0.17.1, o @ serve para passar a versao desejada e, -E, serve para
+dizer que � exatamente essa vers�o
+==========================================================================================
+npm i -g @vue/cli; esse comando 
+==========================================================================================
+npm i --save-dev http-server, essa dependecia serve para requisi��es via ajax
+escrevendo no navegador: http://localhost:8080 esse link, entra na pagina index do projeto
+para que funcione, dentro do package.jon, tem que adicionar em start o seguinte: 
+"scripts": { "start": "http-server . -c-1"} o ponto . significa que � na pagina atual,
+o -c significa que vai tirar o cache, o -1 significa que o cache vai estar desabilitado
+npm run serve starta o servidor
+==========================================================================================
+POR FIM, npm i, instala todas as dependencias que foram adicionada no package.json
+=========================================================================================
+INSTALAR O popper.js: npm i --save-dev popper.js, popper serve pra criar toltips
