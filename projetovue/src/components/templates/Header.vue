@@ -1,54 +1,53 @@
 <template>
-    <header class="header bg-dark ">
-        <div class="container conteudoCabecalho">
-            <div class="row mt-3 my-2">
+    <header class="header bg-dark fixed-top">
+        <!-- <b-container-fluid> -->
+            <b-row class="mx-5 my-4">
+
 
                 <!-- Logotipo e o Titulo do Cabeçalho -->
-                <div class="logoAndTitle col-xs-12 col-sm-12 col-md-12 col-lg-5 d-flex justify-flex-start">
-                    <div class="logotipo">
-                        <router-link to="/">
-                            <img class="mr-2 img-fluid img-thumbnail" src="@/assets/img/logotipo.jpg" alt="Tranças e Penteados" />
-                        </router-link>
-                    </div>
-                    <div class="titulo mt-2 col-xs-6">
-                        <router-link to="/">{{ title }}</router-link> 
-                    </div>
-                </div>
+                <b-col xs="12" sm="12" md="12" lg="5" xl="4" class="logoAndTitle d-flex m-0 p-0">
+                    <router-link to="/">
+                        <img class="mr-2 ml-0 img-fluid img-thumbnail" src="@/assets/img/logotipo.jpg" alt="Tranças e Penteados" />
+                    </router-link>
+                    <div class="titulo mt-2 pl-1">
+                        <router-link to="/">{{ title }}</router-link>
+                    </div> 
+                </b-col>
+
 
                 <!-- Campo de Busca -->
-                <div class="col-xs-12 col-sm-12 col-md-12 col-lg-5 d-flex mt-2">
+                <b-col xs="12" sm="12" md="12" lg="5" xl="6" class="campoBusca d-flex mr-0 ml-0 mb-0 pl-0">
                     <form class="d-flex">
                         <div class="formSearch form-group mb-0">   
                             <input class="form-control" type="search" placeholder="Pesquise por tranças e penteados">
                         </div>
-                        <button class="btn btn-success" type="submit">&#128269;</button>
+                        <button class="btn btn-success btnSearch" type="submit">&#128269;</button>
                     </form>
-                </div>
+                </b-col>
 
-                <!-- Área de login com modal -->
-                <div class="cadastro d-flex justify-content-flex-start col-xs-12 col-sm-12 col-md-12 col-lg-2 p-0">
-                    <b-navbar toggleable="lg" type="dark">
-                        <b-container>
-                            <b-navbar-nav>
-                                <b-nav-item-dropdown type="light" text="Acessar minha conta">
-                                    <b-dropdown-item>
-                                        <b-navbar-brand :to="{ name: 'login' }">
-                                            <button block class="btn btn-secondary">Login</button>     
-                                        </b-navbar-brand>
-                                    </b-dropdown-item>
-                                    <b-dropdown-divider></b-dropdown-divider>
-                                    <b-dropdown-item>Não tem conta? Cadastre-se</b-dropdown-item>
-                                </b-nav-item-dropdown>
-                            </b-navbar-nav>
-                        </b-container>
+
+                <!-- Área de login -->
+                <b-col xs="12" sm="12" md="12" lg="2" xl="2" class="register m-0 p-0">
+                    <b-navbar toggleable="sm" type="dark" class="p-0 m-0">
+                        <b-navbar-nav>
+                            <b-nav-item-dropdown type="light" text="Acessar minha conta">
+                                <b-dropdown-item>
+                                    <b-navbar-brand class="loginNavBar text-center" :to="{ name: 'login' }">
+                                        <button type="button" class="btn btn-dark btn-md btn-block">Entrar</button>     
+                                    </b-navbar-brand>
+                                </b-dropdown-item>
+                                <b-dropdown-divider></b-dropdown-divider>
+                                <b-dropdown-item variant="dark">Não tem conta? Cadastre-se</b-dropdown-item>
+                            </b-nav-item-dropdown>
+                        </b-navbar-nav>
                     </b-navbar>
-                </div>
-            </div>
-        </div>
+                </b-col>
+            </b-row>
+        <!-- </b-container-fluid> -->
 
 
         <!-- Links de navegação -->
-        <div v-show="pageTop()"  id="scrollNavHide" class="container-fluid p-0 navegacao position-fixed">
+        <div class="container-fluid p-0 navegacao">
             <nav class="navbar navbar-expand-md navbar-light bg-primary">
                 <ul class="navbar-nav">
                     <li class="nav-item">
@@ -74,21 +73,7 @@ export default {
         title: String,
     },
     methods: {
-       pageTop: function() {
-        //    window.scroll = scroll;
-           if(window.scrollY > 100) {
-               document.getElementById('scrollNavHide').style.display = "none";
-           } else {
-               document.getElementById('scrollNavHide').style.display = "visible";
-           }
-       },
-        mounted() {
-             document.onreadystatechange = () => { 
-            if (document.readyState == true) {
-                    this.pageTop()
-                } 
-            }
-        }
+       
     }
 }
 </script>
@@ -97,6 +82,8 @@ export default {
     .header { 
         grid-area: header;
     }
+
+
     .titulo a {
         color: #fff;
         text-decoration: none;
@@ -108,45 +95,61 @@ export default {
         text-decoration: none;
     }
 
-    .cadastro a {
+
+    .register a {
         color: #fff;
         text-decoration: none;
         font-size: 1rem;
         font-family: sans-serif;
     }
-    .cadastro a:hover {
-        color: #fff;
-        text-decoration: none;
-        visibility: hidden;
+    .register a:hover {
+        color: #d4cacaa8;
     }
+
+
 
     form {
         width: 100%;
     }
-
     .formSearch {
         width: 80%;
         height: 70%;
     }
-
-    button {
+    .btnSearch {
         height: 2.4rem;
     }
+
 
     .logoAndTitle a:hover {
         color: #d4cacaa8;
     }
-    .cadastro a:hover {
-        color: #d4cacaa8;
+    
+
+    .loginNavBar {
+        width: 100%;
+        height: 100%;
     }
+
+
+
+
 
     /* Abaixo são só media query */
     @media (max-width: 991px) { 
         .navegacao { display: none; }
     }
 
-    @media (min-width: 361px) and (max-width: 743px), (orientation: portrait) {
-        .conteudoCabecalho { border: solid #ab2eb2 1px;  }
+    @media (max-width: 991px) {
+        .campoBusca { margin-top: 1rem; }
     }
 
+    @media (max-width: 360px) {
+        .titulo { margin-left: 1rem; }
+    }
+
+    /* @media (min-width: 576px) {
+        .register { padding: px; }
+    } */
+
+   
 </style>
