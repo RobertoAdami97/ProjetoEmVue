@@ -14,6 +14,11 @@ export default {
 <style>
     .content {
         grid-area: content;
-        margin-top: 1.2rem;
+
+        display: flex;
+        margin: 1.2rem 0 1.2rem 0.5rem;
+        top: 10rem;
+        position: absolute;
+        z-index: 0;
     }
 </style>

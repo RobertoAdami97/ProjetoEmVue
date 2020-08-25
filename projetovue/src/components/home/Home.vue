@@ -1,17 +1,19 @@
 <template>
-  <div class="links">
-      <Paginas />
+  <div class="main">
       <h1>cade</h1>
   </div>
 </template>
 <script>
-import Paginas from "../templates/Paginas";
+
 export default {
-    name: "Home",
-    components: { Paginas }
+    name: "Home"
 }
 </script>
 
 <style>
+    h1 {
+      height: 2000px;
+    }
+
     
 </style>
