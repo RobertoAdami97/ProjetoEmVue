@@ -14,7 +14,7 @@ import { mapState } from 'vuex';
 export default {
     name: "Menu",
     computed: mapState(['menuVisivel']),
-     methods: {
+    methods: {
         estadoMenu() {
             this.$store.commit('estadoMenu')
         }
@@ -32,7 +32,7 @@ export default {
 
         height: 100%;
         background-color: #3f3a3a;
-        width: 18rem;
+        width: 17rem;
         position: fixed;
         z-index: 5;
     }

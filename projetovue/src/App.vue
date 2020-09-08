@@ -1,7 +1,7 @@
 <template>
     <div id="app" :class="{'esconde-menu': !menuVisivel}">
         <Header title="Thay" subtitle="Tranças & Penteados" />
-        <Menu />
+        <Menu id="menu" />
         <Content />
         <Footer />
     </div>
@@ -19,8 +19,7 @@ import Footer from "./components/templates/Footer";
 export default {
     name: 'App',
     components: {Header, Menu, Content, Footer},
-    computed: mapState(['menuVisivel']),
-    
+    computed: mapState(['menuVisivel'])
 }
 </script>
 
@@ -29,7 +28,7 @@ export default {
 
     @media(max-width: 991px) {
         #app {
-            height: 100vh;
+            min-height: 100vh;
 
             display: grid;
             grid-template-rows: 9.5rem 1fr 10rem;
@@ -42,16 +41,16 @@ export default {
     }
 
     
-      #app.esconde-menu {
+    #app.esconde-menu {
         height: 100vh;
-       
-        
+
         display: grid;
         grid-template-rows: 9.5rem 1fr 10rem;
         grid-template-areas:
             "header header"
             "content content"
             "footer footer";
-      }
+    }
+
 
 </style>
