@@ -20,5 +20,11 @@ export default new Vuex.Store({
                 state.menuVisivel = visivel;
             }
         }
+    },
+    escondeMenu(state) {
+        if(state.menuVisivel) {
+            state.menuVisivel = !state.menuVisivel
+        }        
     }
+
 })
