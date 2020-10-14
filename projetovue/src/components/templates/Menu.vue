@@ -1,10 +1,21 @@
 <template>
     <aside class="menu" v-show="menuVisivel">
-        <b-navbar class="toggleMenu" toggleable="lg" type="light" v-if="menuVisivel">
-            <b-navbar-toggle target="nav-collapse" @click="estadoMenu"></b-navbar-toggle>
-            <b-collapse id="nav-collapse" is-nav></b-collapse>
+        <div class="menu-header" v-if="menuVisivel">
+            <div class="seta-svg">
+                <svg @click="estadoMenu" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:svgjs="http://svgjs.com/svgjs" version="1.1" x="0" y="0" viewBox="0 0 64 64" style="enable-background:new 0 0 512 512" xml:space="preserve" class="seta-meu">
+                    <g>
+                        <path xmlns="http://www.w3.org/2000/svg" d="m54 30h-39.892l15.272-14.552c.799-.762.83-2.028.068-2.828-.762-.798-2.027-.831-2.828-.068l-17.445 16.625c-.758.758-1.175 1.761-1.175 2.823s.417 2.063 1.21 2.858l17.41 16.59c.387.369.884.552 1.38.552.528 0 1.055-.208 1.448-.62.762-.8.731-2.065-.068-2.828l-15.341-14.552h39.961c1.104 0 2-.896 2-2s-.896-2-2-2z" fill="#ffffff" data-original="#012e52" />
+                    </g>
+                </svg>
+                <span class="texto-visitante">
+                    <a>Olá Visitante</a>
+                </span>
+                <div class="minha-conta">
+                    <router-link class="link-login" :to="{ name: 'login' }"><b>MINHA CONTA <span class="icone-direita">&#65515;</span></b></router-link>
+                </div>
+            </div>
             <div class="fechaMenu" @click="fechaMenu"></div>
-        </b-navbar>
+        </div>
     </aside>
 </template>
 
@@ -18,8 +29,8 @@ export default {
             this.$store.commit('estadoMenu')
         },
         fechaMenu() {
-            document.querySelector('.toggleMenu').addEventListener('click', () => {
-                document.querySelector('.fechaMenu').classList.toggle('isClose');
+            document.querySelector('.menu-header').addEventListener('click', () => {
+                document.querySelector('.menu-header').classList.toggle('isClose');
                 this.$store.commit('estadoMenu')
             });
         }
@@ -34,7 +45,7 @@ export default {
         flex-direction: column;
         flex-wrap: wrap;
         height: 100%;
-        background-color: #3f3a3a;
+        background-color: #fff;
         width: 17rem;
         position: fixed;
 
@@ -52,9 +63,41 @@ export default {
 
         z-index: 1;
     }
-    .toggleMenu {
-        position: relative;
-        z-index: 10;
+    .menu-header {
+        background-color: #080808;
+    }
+
+    .seta-meu {
+        cursor: pointer;
+        width: 3rem;
+        height: 3rem;
+        margin: 1.5rem .5rem 0 .5rem;
+    }
+
+    .seta-svg {
+        height: 7rem;
+    }
+
+    .texto-visitante {
+        font-size: 2rem;
+        color: #fff;
+    }
+
+    .minha-conta {
+        margin: 0 0 0 4rem;
+        font-size: 1.3rem;
+        color: #fff;
+    }
+
+    .link-login {
+        text-decoration: none!important;
+        color: #fff!important;
+    }
+
+    .icone-direita {
+        color: #fff;
+        height: 1rem;
+        width: 1rem;
     }
 
     .isClose {
@@ -63,7 +106,9 @@ export default {
 
     .menu.isOpen {
         display: visible;
-    }   
+    }
+ 
+
     @media(min-width: 991px) {
         .menu {
             display: none;
